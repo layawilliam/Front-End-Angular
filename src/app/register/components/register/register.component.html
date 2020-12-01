@@ -1,0 +1,88 @@
+<mat-toolbar div fxLayout="column" fxLayoutAlign="space-evenly end" >
+    
+    <a class="bthead" mat-stroked-button  routerLink="/login">Login</a>     
+
+</mat-toolbar>
+
+<div  fxLayout="column" fxLayoutAlign="space-around center" class="container">
+    <mat-card class="example-card">
+                
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-card  class="contenedor-card" fxLayout="column"  fxLayoutAlign="start center" class="register-card">
+                
+                <div>
+                    
+                    <mat-card-title>
+                        
+                        <p>Formulario de Registro</p>
+                        
+                    </mat-card-title>
+                    
+                </div>
+                
+            
+                
+                <form [formGroup]="form" (ngSubmit)="send($event)" fxLayout="column" fxLayoutAlign="space-evenly center"  class="formR">
+                    <br>
+                    <div fxLayoutGap="15px">
+                        <mat-form-field appearance="fill">
+
+                            <mat-label>Ingrese su nombre</mat-label>
+                            <input matInput formControlName="nombre">
+                            
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+
+                            <mat-label>Ingrese su apellido</mat-label>
+                            <input matInput formControlName="apellido">
+                            
+                        </mat-form-field>
+                    </div>
+                    <br>
+                    <div fxLayoutGap="15px">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Compañia</mat-label>
+                            <mat-select formControlName="compañia">
+                                <mat-option value="1">Fuse Pong</mat-option>
+                                <mat-option value="2">Compañia 2</mat-option>
+                                <mat-option value="3">Compañia 3</mat-option>
+                                <mat-option value="4">Compañia 4</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                        
+                            <mat-label>Ingrese su correo</mat-label>
+                            <input matInput placeholder="example@example.com" type="email" formControlName="correo">
+                            
+                        </mat-form-field>
+                    </div>
+                    <br>
+                    <div fxLayoutGap="15px">
+                        <mat-form-field>
+
+                            <input placeholder="Contraseña" [type]=" hide ? 'password' : 'text'" formControlName="contraseña" matInput type="password" >
+                            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field >
+
+                            <input placeholder="Confirme Contraseña" [type]=" hideV ? 'password' : 'text'" formControlName="contraseñav" matInput type="password" >
+                            <mat-icon matSuffix (click)="hideV = !hideV">{{hideV ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    
+                    <mat-card-actions >
+                        <button mat-raised-button color="warn" [disabled]="form.invalid" mat-raised-button type="submit" class="but">Enviar</button>
+                    </mat-card-actions>
+                
+                </form>
+                
+            </mat-card>
+        </div>
+            
+            
+        
+    </mat-card>
+    
+    </div>
+      
+

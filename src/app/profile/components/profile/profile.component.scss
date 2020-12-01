@@ -1,0 +1,37 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  
+    .navlist{
+      vertical-align: middle;
+      margin-right: 20px;
+    }
+  }
+mat-drawer{
+  width: 255px;
+  
+}
+mat-drawer-container{
+  height: 100%;
+  
+}
+mat-drawer-content{
+  padding: 20px;
+}
+.s1{
+  display: flex;
+  align-items: center;
+}
+.bnlout{
+  margin-left: 72px;
+}
+.aHome{
+  margin-left: 8px;
+}
+.nav{
+  max-width: 240px;
+  margin-left: 5px;
+  
+}
+  

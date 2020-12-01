@@ -1,0 +1,83 @@
+<div fxLayout="column" fxLayoutAlign="space-around center">
+    <mat-card class="example-card" >
+      <mat-toolbar class="toolbar"  fxLayoutAlign="space-around center" [ngSwitch]="id">
+            <span *ngSwitchCase="1" >Tickets Desarrollo Proyecto Front End</span>
+            <span *ngSwitchCase="2" >Tickets Desarrollo Proyecto Back End</span>
+            <span *ngSwitchCase="3" >Tickets Desarrollo Proyecto IA</span>
+            <span *ngSwitchCase="4" >Tickets Desarrollo Proyecto Bigdata</span>
+            
+        </mat-toolbar>
+      
+        <br>
+        <a class="anclah" mat-raised-button (click)="openOtherDialog()">Asignar Nuevo Ticket</a>
+        <br>
+  
+        <table mat-table [dataSource]="data" class="mat-elevation-z8 OT-table">
+            <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef class="tbl"><b>Numero Ticket</b> </th>
+            <td mat-cell *matCellDef="let data"> {{data.id_ticket}} </td>
+            </ng-container>
+            <ng-container matColumnDef="creado">
+            <th mat-header-cell *matHeaderCellDef class="tbl"><b>Fecha de Creación</b> </th>
+            <td mat-cell *matCellDef="let data"> {{data.created_at |date:'dd/MM/yyyy HH:mm:ss'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="comentarios">
+            <th mat-header-cell *matHeaderCellDef class="tbl"><b>comentarios</b>  </th>
+            <td mat-cell *matCellDef="let data"> {{data.comentarios}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef class="tbl"><b>Estado</b>  </th>
+            <td mat-cell *matCellDef="let data"> {{data.id_estado}} </td>
+            </ng-container>
+
+            
+
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef class="tbl"><b>Actions</b>  </th>
+                <td mat-cell *matCellDef="let data">
+                <a mat-raised-button [routerLink]="['edit', data.id_ticket]">Editar</a>
+                <button mat-raised-button color="warn" (click)="openConfirmation(data.id_ticket)">Eliminar</button>
+                </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <ng-template #secondDialog>
+
+            <h2 matDialogTitle align="center">Digite el numero de Nuevo Ticket</h2>
+    
+            <div align= "center" >
+                
+                <input matInput type ="text" placeholder="xxxxx"  [(ngModel)]="tk">
+                
+            </div>
+    
+            <mat-dialog-actions align="center">
+            <button  mat-raised-button color="primary" (click)="newTk()" matDialogClose click >Crear</button>
+            </mat-dialog-actions>
+    
+        </ng-template> 
+        <ng-template #confirmationDialog >
+            <div div fxLayout="column" fxLayoutAlign="space-around center ">
+            <div>
+                <h3 matDialogTitle align="center">¿Estás Segur@ de Eliminar OT "{{deleteRow}}"?</h3>
+            </div>
+            
+            <div fxLayout="row" fxLayoutAlign="space-around center " fxLayoutGap="10px" >
+                <mat-dialog-actions>
+                <button  mat-raised-button color="warn" (click)="deleteOT(deleteRow)" matDialogClose click >Eliminar</button>
+                </mat-dialog-actions>
+                <mat-dialog-actions>
+                <button   matDialogClose click  mat-raised-button target="_blank">Cancelar</button>
+                </mat-dialog-actions>
+            </div>
+    
+            </div>
+            
+            
+        </ng-template>   
+      
+    </mat-card>
+  </div>

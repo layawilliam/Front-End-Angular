@@ -1,0 +1,73 @@
+<mat-toolbar div fxLayout="column" fxLayoutAlign="space-evenly end" >
+
+    
+    <a class="bthead" mat-stroked-button  routerLink="/registro">Registrarse</a>
+              
+
+</mat-toolbar>
+
+<div fxLayout="row" fxLayoutAlign="space-evenly center" class= "padre" >
+    
+    <div class="logo">
+        <a >
+            <img src="./../../../../assets/nodejs.png" alt="" class="logo1">
+        </a>
+    </div>
+    <div>
+        <form [formGroup] = "form" (ngSubmit)="login($event)">
+            
+            <mat-card class="container-card" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="25px">
+                <mat-card-header >
+                    <mat-card-title>Iniciar Sesión</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="25px">
+                    
+                    <div fxLayout="row" fxLayoutAlign="space-around center" class="email" fxLayoutGap="16px">
+                        <div >
+                            <mat-icon aria-hidden="false" aria-label="Example home icon" class="holi">account_circle</mat-icon>
+                        </div>
+    
+    
+                        <mat-form-field class="email" >
+    
+                            <input placeholder="email" formControlName="correo" matInput charset="utf-8"  type="email" >
+    
+                        </mat-form-field>
+                    </div>
+                    
+    
+                    <div fxLayout="row" fxLayoutAlign="space-around center" class="pass" fxLayoutGap="16px">
+    
+                        <div class="iconP">
+                            <mat-icon aria-hidden="false" aria-label="Example home icon">lock</mat-icon>
+                        </div>
+    
+                        <mat-form-field class="pass">
+    
+                            <input placeholder="password" [type]=" hide ? 'password' : 'text'" formControlName="contraseña" matInput type="password" required>
+                            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </mat-form-field>
+                        
+    
+                    </div>
+                </mat-card-content>
+    
+                <mat-card-actions >
+                    <button mat-raised-button color="warn" [disabled]="form.invalid" mat-raised-button type="submit" class="but">Ingresar</button>
+                </mat-card-actions>
+    
+                <a routerLink="/LoginHelp" class="login-help-link" data-uia="login-help-link">¿Necesitas ayuda?</a>
+    
+            </mat-card>
+            
+        </form>
+    </div>
+    
+
+</div>
+<mat-divider></mat-divider>
+<footer>
+    &copy; All rights reserved 2020 
+</footer>
+

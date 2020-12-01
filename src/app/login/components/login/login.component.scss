@@ -1,0 +1,28 @@
+.mat-toolbar{
+    background-color: rgba(25, 180, 63, 0.89);
+    .bthead{
+        background-color: rgba(255, 255, 255, 0.89);
+        margin-right: 25px;
+    }
+}
+
+.padre{
+    background-color: rgba(247, 247, 247, 0.247);
+    min-height: 559px;
+}
+.container-card{
+    min-width: 300px;
+    min-height: 390px;
+    
+}
+.email{
+    
+    min-width: 240px;
+}
+.pass{
+   
+    min-width: 240px;
+}
+.but{
+    min-width: 150px;
+}

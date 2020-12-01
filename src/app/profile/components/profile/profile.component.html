@@ -1,0 +1,79 @@
+<mat-toolbar color="primary"  fxLayout="row"  fxLayoutAlign="space-between center" >
+    <div fxLayout="row" fxLayoutGap="15px">
+  
+      <button mat-icon-button (click)="toggleSideBar()">
+        <mat-icon>menu</mat-icon>
+      </button>
+  
+      <span class="s1" >Menu</span>
+  
+    </div>
+  
+    <div fxLayout="row" fxLayoutGap="15px">
+      <span class="s1">{{ userProfile.nombre + " " + userProfile.apellido}}</span>
+  
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" >
+  
+        <button mat-icon-button>
+          <mat-icon>account_box</mat-icon><mat-icon>expand_more</mat-icon>
+        </button>
+        
+      </button>
+  
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item disabled>
+          <mat-icon>mail</mat-icon>
+          <span>{{ userProfile.correo}}</span>
+        </button>
+  
+        <button mat-menu-item disabled>
+          <mat-icon>person</mat-icon>
+          <span>{{ userProfile.nombre + " " + userProfile.apellido}}</span>
+        </button>
+  
+        <button mat-menu-item >
+          <button mat-raised-button color="warn" (click)="logOt()"  >
+            LogOut
+          </button>
+        </button>
+      </mat-menu>
+    </div>
+</mat-toolbar>
+<mat-drawer-container >
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+      <mat-nav-list class="nav">
+        
+        
+        <a  mat-list-item routerLink="/profile"><span class="material-icons navlist">house</span>
+          Nuestras Compañias
+        </a> 
+        <mat-divider></mat-divider>
+  
+        <mat-accordion  >
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                              (closed)="panelOpenState = false">
+          <mat-expansion-panel-header >
+            
+            <mat-panel-title> <span class="material-icons navlist">article</span>
+              PROYECTOS
+            </mat-panel-title>
+            
+          </mat-expansion-panel-header>
+  
+            <a mat-list-item [routerLink]="['/profile/proyecto', '1']">Proyecto 1</a>
+            <a mat-list-item [routerLink]="['/profile/proyecto', '2']">Proyecto 2</a>  
+            <a mat-list-item [routerLink]="['/profile/proyecto', '3']">Proyecto 3</a> 
+            <a mat-list-item [routerLink]="['/profile/proyecto', '4']">Proyecto 4</a> 
+
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-divider></mat-divider>
+        
+        
+      </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+  
