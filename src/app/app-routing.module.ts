@@ -15,12 +15,8 @@ const routes: Routes = [
     path: 'profile',
     canActivate: [AdminGuard],
     loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
-  },
-  {
-    path: '**',
-    loadChildren: () =>
-      import('./login/login.module').then(m => m.LoginModule)
-  },
+  }
+
 ];
 
 @NgModule({

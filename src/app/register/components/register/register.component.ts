@@ -44,20 +44,11 @@ export class RegisterComponent implements OnInit {
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
       correo: ['', [Validators.required, Validators.email]],
-      compañia: ['', [Validators.required]],
+      company: ['', [Validators.required]],
       contraseña: ['', [Validators.required, Validators.minLength(6)]],
       contraseñav: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
-  onSubmit(event: Event): void {
-    event.preventDefault();
-    if (this.form.valid) {
-      const value = this.form.value;
-      console.log(value);
-      /* this.hallazgoService.onSubmit(value).subscribe((data) => {
-        console.log(data);
-      }); */
-    }
-  }
+
 }
