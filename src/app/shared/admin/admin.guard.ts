@@ -7,7 +7,7 @@ import {
   Router
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from './../core/services/auth/auth.service';
+import { AuthService } from '../../core/services/auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +23,9 @@ export class AdminGuard implements CanActivate {
     | boolean
     | UrlTree {
     if (this.authService.hasUser()) {
+
       return true;
+
     } else {
       this.router.navigateByUrl('/login');
       return false;
