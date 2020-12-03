@@ -14,10 +14,6 @@ export class ProfileComponent implements OnInit {
   panelOpenState = false;
   sideBarOpen = true;
   value: any;
-  progressbarValue: any;
-  curSec = 0;
-  timerStart = Date.now();
-  loading: any;
   id: Proyectos;
 
   constructor(

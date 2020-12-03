@@ -11,6 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'registro',
+    canActivate: [HasUserGuard],
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
   },
   {
