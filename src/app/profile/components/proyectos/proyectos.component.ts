@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { TicketService } from './../../../core/services/ticket/ticket.service';
 import { UserService } from 'src/app/core/services/user/user.service';
+import { HistoryService } from '../../../core/services/history/history.service';
 
 
 import {
@@ -33,6 +34,7 @@ export class ProyectosComponent implements OnInit {
 
   ];
   historyColumns: string[] = [
+    'id',
     'usuario',
     'Fecha Modificación',
 
@@ -45,19 +47,22 @@ export class ProyectosComponent implements OnInit {
   array: any;
   tk: string;
   hisTk: any;
+  tableh: any;
+
   constructor(
     private formBuilder: FormBuilder,
     private dialog: MatDialog,
     private router: Router,
     private ticketService: TicketService,
     private activeRoute: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private historyService: HistoryService
   ) {}
 
   ngOnInit(): void {
 
     this.fetchTk();
-
+    this.fetchHistory();
   }
   fetchTk(): any {
     this.activeRoute.params.subscribe((params: Params) => {
@@ -66,6 +71,16 @@ export class ProyectosComponent implements OnInit {
         console.log(data);
         this.data = data;
 
+      });
+
+    });
+  }
+  fetchHistory(): any {
+    this.activeRoute.params.subscribe((params: Params) => {
+      this.id = params.id;
+      this.historyService.getAll(this.id).subscribe((data) => {
+        console.log(data);
+        this.tableh = data;
 
       });
 
