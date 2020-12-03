@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CompanyComponent } from './components/company/company.component';
+import { EditComponent } from './components/edit/edit.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
-import { AdminGuard } from '../shared/admin/admin.guard';
+
 
 
 const routes: Routes = [
@@ -20,6 +21,10 @@ const routes: Routes = [
       {
         path: 'proyecto/:id',
         component: ProyectosComponent
+      },
+      {
+        path: 'proyecto/:id/edit/:tk',
+        component: EditComponent
       }
     ]
   },

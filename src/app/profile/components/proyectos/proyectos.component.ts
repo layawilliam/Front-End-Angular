@@ -71,7 +71,8 @@ export class ProyectosComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       id_ticket: [this.tk],
-      id_proyecto: [this.id]
+      id_proyecto: [this.id],
+      id_company: [this.userProfile.company]
     });
     const value = this.form.value;
 

@@ -15,17 +15,20 @@ export class RegisterComponent implements OnInit {
   form: FormGroup;
   hide = true;
   hideV = true;
+  id: any;
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
+
     private registerService: RegisterService,
     private router: Router,
   ) {
     this.buildForm();
   }
 
-  ngOnInit(): any {}
+  ngOnInit(): any {
+
+  }
 
   send(event: Event): void {
     event.preventDefault();

@@ -7,9 +7,10 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CompanyComponent } from './components/company/company.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
+import { EditComponent } from './components/edit/edit.component';
 
 @NgModule({
-  declarations: [ProfileComponent, CompanyComponent, ProyectosComponent],
+  declarations: [ProfileComponent, CompanyComponent, ProyectosComponent, EditComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,

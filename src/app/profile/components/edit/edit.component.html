@@ -1,0 +1,54 @@
+<div  fxLayout="column" fxLayoutAlign="space-around center" >
+    <mat-card class="example-card" class="container">
+                
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-card  class="contenedor-card" fxLayout="column"  fxLayoutAlign="start center" class="register-card">
+                
+                <div>
+                    
+                    <mat-card-title>
+                        
+                        <p>Ticket {{idTk}}</p>
+                        
+                    </mat-card-title>
+                    
+                </div>
+                
+            
+                
+                <form [formGroup]="form" (ngSubmit)="update($event)" fxLayout="column" fxLayoutAlign="space-evenly center">
+                    <br>
+                    <br>
+                    <div fxLayoutGap="15px">
+                        <mat-form-field appearance="fill">
+                            <mat-label>ESTADO ACTUAL DEL TICKET</mat-label>
+                            <mat-select formControlName="id_estado">
+                                <mat-option value="1">ACTIVO</mat-option>
+                                <mat-option value="11">EN PROCESO</mat-option>
+                                <mat-option value="21">FINALIZADO</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <br>
+                    <div class="full" fxLayoutAlign="space-evenly center">
+                        <mat-form-field appearance="fill" style="width: 80%">
+                          <mat-label>Comentarios</mat-label>
+                          <textarea matInput formControlName="comentarios"></textarea>
+                        </mat-form-field>
+                    </div>
+                    
+                    <mat-card-actions >
+                        <button mat-raised-button color="warn" [disabled]="form.invalid" mat-raised-button type="submit" class="but">Actualizar</button>
+                    </mat-card-actions>
+                
+                </form>
+                
+            </mat-card>
+        </div>
+            
+            
+        
+    </mat-card>
+    
+    </div>
+      
