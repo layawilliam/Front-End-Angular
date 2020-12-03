@@ -14,7 +14,7 @@ export class TicketService {
     return this.http.get(`${environment.url_api}/ticket/${id}`);
   }
   getByTk(tk: string): any {
-    return this.http.get(`${environment.url_api}/ticket/${tk}`);
+    return this.http.get(`${environment.url_api}/ticket/edit/${tk}`);
   }
 
   newTk(tk: Ticket): any {

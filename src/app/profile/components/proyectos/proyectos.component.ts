@@ -22,6 +22,7 @@ export class ProyectosComponent implements OnInit {
 
   @ViewChild('secondDialog') secondDialog: TemplateRef<any>;
   @ViewChild('confirmationDialog') confirmationDialog: TemplateRef<any>;
+  @ViewChild('historDialog') historDialog: TemplateRef<any>;
 
   displayedColumns: string[] = [
     'id',
@@ -31,6 +32,11 @@ export class ProyectosComponent implements OnInit {
     'acciones'
 
   ];
+  historyColumns: string[] = [
+    'usuario',
+    'Fecha Modificación',
+
+  ];
   data: any;
   form: FormGroup;
   deleteRow: string;
@@ -38,6 +44,7 @@ export class ProyectosComponent implements OnInit {
   id: any;
   array: any;
   tk: string;
+  hisTk: any;
   constructor(
     private formBuilder: FormBuilder,
     private dialog: MatDialog,
@@ -84,19 +91,26 @@ export class ProyectosComponent implements OnInit {
 
   }
 
-  deleteOT(id: string): any {
+  deleteTk(id: string): any {
 
     this.ticketService.deleteTk(id).subscribe((rta) => {
       this.fetchTk();
     });
 
   }
+  getHistory(): any{
+
+  }
 
   openOtherDialog(): void {
     this.dialog.open(this.secondDialog);
   }
-  openConfirmation(ot: string): void {
-    this.deleteRow = ot;
+  openConfirmation(tk: string): void {
+    this.deleteRow = tk;
     this.dialog.open(this.confirmationDialog);
+  }
+  openHistorDialog(idTk: string): void{
+    this.hisTk = idTk;
+    this.dialog.open(this.historDialog);
   }
 }
