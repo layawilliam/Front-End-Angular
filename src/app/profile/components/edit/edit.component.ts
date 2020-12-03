@@ -30,8 +30,17 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): any {
     this.idTk = this.activeRoute.snapshot.paramMap.get('tk');
-    this.value = (this.ticketService.getByTk(this.idTk));
-    this.form.patchValue({item: this.value});
+    this.getForm();
+  }
+
+  getForm(): any{
+    this.idTk = this.activeRoute.snapshot.paramMap.get('tk');
+
+    this.ticketService.getByTk(this.idTk).subscribe((dataform) => {
+      this.form.patchValue(dataform);
+    });
+
+
   }
 
   update(event: Event): void {
