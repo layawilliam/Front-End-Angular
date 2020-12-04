@@ -41,6 +41,7 @@ export class ProyectosComponent implements OnInit {
   ];
   data: any;
   form: FormGroup;
+  formH: FormGroup;
   deleteRow: string;
   userProfile: any;
   id: any;
@@ -113,9 +114,7 @@ export class ProyectosComponent implements OnInit {
     });
 
   }
-  getHistory(): any{
 
-  }
 
   openOtherDialog(): void {
     this.dialog.open(this.secondDialog);
@@ -124,8 +123,9 @@ export class ProyectosComponent implements OnInit {
     this.deleteRow = tk;
     this.dialog.open(this.confirmationDialog);
   }
-  openHistorDialog(idTk: string): void{
-    this.hisTk = idTk;
+  openHistorDialog(): void{
+
     this.dialog.open(this.historDialog);
+    this.fetchHistory();
   }
 }

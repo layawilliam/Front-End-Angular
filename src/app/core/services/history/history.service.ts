@@ -12,4 +12,7 @@ export class HistoryService {
   getAll(id: string): any {
     return this.http.get(`${environment.url_api}/history/${id}`);
   }
+  newItem(values: any): any {
+    return this.http.post(`${environment.url_api}/history/`, values );
+  }
 }
