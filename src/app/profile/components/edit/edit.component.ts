@@ -79,10 +79,10 @@ export class EditComponent implements OnInit {
     this.idTk = this.activeRoute.snapshot.paramMap.get('tk');
 
     this.formH = this.formBuilder.group({
-      id_ticket: [this.idTk],
-      id_proyecto: [this.id],
-      id_company: [this.userProfile.company],
+      ticket_num: [this.idTk],
+      proyecto: [this.id],
       correo: [this.userProfile.correo],
+      accion: ['Editar']
     });
 
   }

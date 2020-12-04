@@ -109,6 +109,8 @@ export class ProyectosComponent implements OnInit {
 
   deleteTk(id: string): any {
 
+
+
     this.ticketService.deleteTk(id).subscribe((rta) => {
       this.fetchTk();
     });
