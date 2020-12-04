@@ -36,7 +36,9 @@ export class ProyectosComponent implements OnInit {
   historyColumns: string[] = [
     'id',
     'usuario',
-    'Fecha Modificación',
+    'acción',
+    'Fecha Modificación'
+    
 
   ];
   data: any;
