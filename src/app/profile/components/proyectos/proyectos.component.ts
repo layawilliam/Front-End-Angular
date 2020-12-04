@@ -6,17 +6,12 @@ import { TicketService } from './../../../core/services/ticket/ticket.service';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { HistoryService } from '../../../core/services/history/history.service';
 
-
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-proyectos',
   templateUrl: './proyectos.component.html',
-  styleUrls: ['./proyectos.component.scss']
+  styleUrls: ['./proyectos.component.scss'],
 })
 export class ProyectosComponent implements OnInit {
   /* id: Proyectos; */
@@ -30,17 +25,9 @@ export class ProyectosComponent implements OnInit {
     'comentarios',
     'estado',
     'creado',
-    'acciones'
-
+    'acciones',
   ];
-  historyColumns: string[] = [
-    'id',
-    'usuario',
-    'acción',
-    'Fecha Modificación'
-    
-
-  ];
+  historyColumns: string[] = ['id', 'usuario', 'acción', 'Fecha Modificación'];
   data: any;
   form: FormGroup;
   formH: FormGroup;
@@ -51,6 +38,7 @@ export class ProyectosComponent implements OnInit {
   tk: string;
   hisTk: any;
   tableh: any;
+  idTk: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -63,7 +51,6 @@ export class ProyectosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     this.fetchTk();
     this.fetchHistory();
   }
@@ -73,20 +60,14 @@ export class ProyectosComponent implements OnInit {
       this.ticketService.getAll(this.id).subscribe((data) => {
         console.log(data);
         this.data = data;
-
       });
-
     });
   }
   fetchHistory(): any {
-    this.activeRoute.params.subscribe((params: Params) => {
-      this.id = params.id;
-      this.historyService.getAll(this.id).subscribe((data) => {
-        console.log(data);
-        this.tableh = data;
-
-      });
-
+    this.id = this.activeRoute.snapshot.paramMap.get('id');
+    this.historyService.getAll(this.id).subscribe((data) => {
+      console.log(data);
+      this.tableh = data;
     });
   }
 
@@ -97,28 +78,37 @@ export class ProyectosComponent implements OnInit {
     this.form = this.formBuilder.group({
       id_ticket: [this.tk],
       id_proyecto: [this.id],
-      id_company: [this.userProfile.company]
+      id_company: [this.userProfile.company],
     });
     const value = this.form.value;
 
     this.ticketService.newTk(value).subscribe((data) => {
       console.log(data);
+
       this.fetchTk();
-
     });
-
   }
 
   deleteTk(id: string): any {
-
-
-
+    this.id = this.activeRoute.snapshot.paramMap.get('id');
+    this.userProfile = JSON.parse(this.userService.getUser());
     this.ticketService.deleteTk(id).subscribe((rta) => {
+      this.formH = this.formBuilder.group({
+        ticket_num: [id],
+        proyecto: [this.id],
+        correo: [this.userProfile.correo],
+        accion: ['Eliminar'],
+      });
+      if (this.formH.valid) {
+        const values = this.formH.value;
+        console.log(values);
+        this.historyService.newItem(values).subscribe((dat) => {
+          console.log(dat);
+        });
+      }
       this.fetchTk();
     });
-
   }
-
 
   openOtherDialog(): void {
     this.dialog.open(this.secondDialog);
@@ -127,8 +117,7 @@ export class ProyectosComponent implements OnInit {
     this.deleteRow = tk;
     this.dialog.open(this.confirmationDialog);
   }
-  openHistorDialog(): void{
-
+  openHistorDialog(): void {
     this.dialog.open(this.historDialog);
     this.fetchHistory();
   }
